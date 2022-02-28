@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}{{blog.blog_title}}{% endblock %}
+{% block content %}
+    <section class="hero is-info is-medium is-bold" style="background-image: url({{ url_for('static', filename='img/'+blog.blog_cover ) }});background-position: center;background-size: cover;background-repeat: no-repeat;height: 500px;">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">{{blog.blog_title}}
+                </h1>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container">
+        <!-- START ARTICLE FEED -->
+        <section class="articles">
+            <div class="column is-8 is-offset-2">
+               
+                <!-- START ARTICLE -->
+                <div class="card article">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-center">
+                                <img src="/static/img/tm-easy-profile.jpg" class="author-image" alt="Placeholder image">
+                            </div>
+                        </div>
+                        <div class="content article-body">
+                          {{blog.blog_content | safe}}
+                        </div>
+                    </div>
+                </div>
+                <!-- END ARTICLE -->
+              
+              </div>
+
+        </section>
+     
+        </div>
+        
+{% endblock %}

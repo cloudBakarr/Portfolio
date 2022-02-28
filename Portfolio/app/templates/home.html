@@ -1,0 +1,205 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block hover_home %}has-background-info-dark has-text-white{% endblock %}
+{% block content %}
+<section class="hero is-medium is-link has-text-centered"
+  style="background-image: url(static/img/back.jpg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+  <div class="hero-body">
+    <p class="title is-size-1" >
+
+    </p>
+    <img src="static/img/CBL.png" width="400px" >
+    <p class="subtitle"> Cloud Engineer
+    </p>
+  </div>
+</section>
+
+
+
+<section class="container has-text-centered">
+  <br />
+  <p class="section-heading">Welcome to my portfolio page.</p>
+  <section>
+    <div class="featured-story-grid">
+
+
+        <div class="columns">
+          <div class="column">
+            <img src="static/img/aws.png"  width="200px">
+          </div>
+          <div class="column">
+            <img src="static/img/Google-Cloud-Emblem.png">
+          </div>
+          <div class="column">
+            <img src="static/img/azure.jpg" width="200px">
+          </div>
+        </div>
+      <h2 class="feature-heading" style="font-size: 30px;">2X GCP Cert</h2>
+
+      <p class="paragraph" style="font-size: 30px;">Since I&#x27;m highly interested in Cloud Computing, and Google is a
+        market leader with their
+        state-of-the-art GCP platform, I&#x27;ve been keen to get their certs and learn the ins and outs of GCP.</p>
+      <div class="wrapz">
+        <form action="https://www.credential.net/profile/bakarhaythar219163/wallet#gs.pn0csd" method="get"
+          target="_blank"> <button class="buttonz">Certs</button>
+        </form>
+      </div>
+
+  </section>
+  <div class="columns features is-centered ">
+
+    <section class="main">
+      <div class="wrap wrap--3">
+        <a href="/about" class="">
+          <div class="boxcontainer boxcontainer--1"
+            style="background-image:url(static/img/3.jpeg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+            <p>
+              <span class="icon-text">
+                <span class="icon">
+                  <i class="fa fa-address-card"></i>
+                </span>&nbsp;
+                <span>About Me</span>
+              </span>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="wrap wrap--2">
+        <a href="/projects" class="">
+          <div class="boxcontainer boxcontainer--1"
+            style="background-image:url(static/img/2.jpeg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+            <p>
+              <span class="icon-text">
+                <span class="icon">
+                  <i class="fa fa-code"></i>
+                </span>&nbsp;
+                <span>Projects</span>
+              </span>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="wrap wrap--1">
+        <a href="/blog" class="">
+          <div class="boxcontainer boxcontainer--1"
+            style="background-image:url(static/img/blog.jpg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+            <p>
+              <span class="icon-text">
+                <span class="icon">
+                  <i class="fa fa-edit"></i>
+                </span>&nbsp;
+                <span>Blog</span>
+              </span>
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+</section>
+<section class="container has-text-centered">
+  <div id="testimonials" class="section">
+    <div class="site-wrapper">
+      <div class="section-heading-container">
+        <h2 class="section-heading">What my employers say about me</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-block">
+          <p class="paragraph testimonial-text">“Bakar added great value to our team. It&#x27;s quite rare when you come
+            by developers this enthusiastic and ready to learn new technologies.”</p>
+          <div class="testimonial-author-name">XpressRun</div>
+        </div>
+        <div class="testimonial-block">
+          <p class="paragraph testimonial-text"> “Bakar not only shows amazing work ethic but proves he's passionate about his cloud career path and will definitely grow into a well experienced Cloud Expert”</p>
+          <div class="testimonial-author-name">Google Cloud Cohort</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<script>
+  class parallaxTiltEffect {
+    constructor({
+      element,
+      tiltEffect
+    }) {
+      this.element = element;
+      this.boxcontainer = this.element.querySelector(".boxcontainer");
+      this.size = [300, 360];
+      [this.w, this.h] = this.size;
+
+      this.tiltEffect = tiltEffect;
+      this.mouseOnComponent = false;
+      this.handleMouseMove = this.handleMouseMove.bind(this);
+      this.handleMouseEnter = this.handleMouseEnter.bind(this);
+      this.handleMouseLeave = this.handleMouseLeave.bind(this);
+      this.defaultStates = this.defaultStates.bind(this);
+      this.setProperty = this.setProperty.bind(this);
+      this.init = this.init.bind(this);
+      this.init();
+    }
+    handleMouseMove(event) {
+      const {
+        offsetX,
+        offsetY
+      } = event;
+      let X;
+      let Y;
+
+      if (this.tiltEffect == "reverse") {
+        X = ((offsetX - (this.w / 2)) / 3) / 3;
+        Y = (-(offsetY - (this.h / 2)) / 3) / 3;
+      } else if (this.tiltEffect == "normal") {
+        X = (-(offsetX - (this.w / 2)) / 3) / 3;
+        Y = ((offsetY - (this.h / 2)) / 3) / 3;
+      }
+
+      this.setProperty('--rY', X.toFixed(2));
+      this.setProperty('--rX', Y.toFixed(2));
+
+      this.setProperty('--bY', (80 - (X / 4).toFixed(2)) + '%');
+      this.setProperty('--bX', (80 - (Y / 4).toFixed(2)) + '%');
+    }
+    handleMouseEnter() {
+      this.mouseOnComponent = true;
+      this.boxcontainer.classList.add("boxcontainer--active");
+    }
+    handleMouseLeave() {
+      this.mouseOnComponent = false;
+      this.defaultStates();
+    }
+    defaultStates() {
+      this.boxcontainer.classList.remove("boxcontainer--active");
+      this.setProperty('--rY', 0);
+      this.setProperty('--rX', 0);
+      this.setProperty('--bY', '80%');
+      this.setProperty('--bX', '50%');
+    }
+
+    setProperty(p, v) {
+      return this.boxcontainer.style.setProperty(p, v);
+    }
+
+    init() {
+      this.element.addEventListener('mousemove', this.handleMouseMove);
+      this.element.addEventListener('mouseenter', this.handleMouseEnter);
+      this.element.addEventListener('mouseleave', this.handleMouseLeave);
+    }
+  }
+  const $ = e => document.querySelector(e);
+
+  const wrap1 = new parallaxTiltEffect({
+    element: $('.wrap--1'),
+    tiltEffect: 'reverse'
+  })
+  const wrap2 = new parallaxTiltEffect({
+    element: $('.wrap--2'),
+    tiltEffect: 'normal'
+  })
+  const wrap3 = new parallaxTiltEffect({
+    element: $('.wrap--3'),
+    tiltEffect: 'reverse'
+  })
+</script>
+{% endblock %}

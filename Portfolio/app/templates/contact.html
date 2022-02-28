@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block hover_contact %}has-background-info-dark has-text-white{% endblock %}
+{% block content %}
+  <section class="container">
+  <br />
+  <div class="has-text-centered">
+      <span class="is-size-3">CONTACT ME</span>
+  </div>
+  <br />
+  <div class="section-light contact card" id="contact" style="width: 60%;margin: 20px auto;padding: 20px;">
+      <div class="container">
+          <div class="columns is-multiline" data-aos="fade-in-up" data-aos-easing="linear">
+          <div class="column">
+              <form action="" method="POST">
+                  <div class="field">
+                    <label class="label">Full Name</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="text" placeholder="Ex. Jane Smith" name="fullname" />
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="email" placeholder="Ex. hello@gmail.com" name="email"/>
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Message</label>
+                    <div class="control">
+                      <textarea class="textarea" placeholder="Textarea" name="message"></textarea>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control ">
+                      <button class="button is-primary">
+                        Submit&nbsp;&nbsp;
+                        <i class="fa fa-paper-plane"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+{% endblock %}
+
+

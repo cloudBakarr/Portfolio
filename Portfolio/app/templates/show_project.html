@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}{{project.project_title}}{% endblock %}
+{% block content %}
+  <section class="container">
+      <div class="columns features is-centered">
+          <div class=" column is-8 card">
+              <div class="card-image">
+                  <figure class="image">
+                    <img src="{{ url_for('static', filename='img/'+project.project_img ) }}" alt="project" >
+                  </figure>
+                </div>   
+          <div class="content" style="margin:20px">
+              <h3>
+                  {{project.project_title}}
+                  
+                </h3>
+            <p>
+                  {{project.project_content | safe}}
+                </p>
+        </div>
+                <a class="button" href="{{project.project_github}}">
+                    <span class="icon">
+                    <i class="fa fa-github"></i>
+                    </span>
+                    <span>GitHub</span>
+                </a>
+          </div>
+      </div>
+  </section>
+{% endblock %}
+
