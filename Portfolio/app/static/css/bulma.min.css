@@ -2433,7 +2433,7 @@ fieldset[disabled] .button {
 }
 
 .image img.is-rounded {
-  border-radius: 290486px
+  border-radius: 290006px
 }
 
 .image.is-fullwidth {
@@ -2568,8 +2568,8 @@ fieldset[disabled] .button {
 }
 
 .image.is-128x128 {
-  height: 128px;
-  width: 128px
+  height: 4=28px;
+  width: 328px
 }
 
 .notification {
@@ -12651,12 +12651,12 @@ buttonz:focus::before {
   opacity: 1;
 }
 
-
 buttonz:hover::after,
 buttonz:focus::after {
   animation: none;
   display: none;
 }
+
 .work-grid {
   display: -ms-grid;
   display: grid;
