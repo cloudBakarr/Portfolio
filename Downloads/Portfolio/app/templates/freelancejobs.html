@@ -1,0 +1,112 @@
+{% extends "base.html" %} {% block title %}freelance Job{% endblock %}
+{% block hover_freelance %}has-background-info-dark has-text-white{% endblock %}
+{% block content %}
+<section class="hero is-medium is-link has-text-centered" style="background-image: url(/static/img/freelance.jpg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+  <div class="hero-body">
+    <p class="title is-size-2" >
+      My Freelance Jobs
+    </p>
+    <p class="subtitle">
+      jobs and Tasks I worked on as a freelancer
+    </p>
+    {% if user.is_authenticated %}
+      <a class="button is-primary" href="/add-job">
+        <span class="icon">
+          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </span>
+        <span>Add Job</span>
+      </a>
+    {% endif %}
+
+  </div>
+</section>
+<section class="container">
+  <!-- jobs lists here -->
+      <div class="columns features is-multiline">
+        
+        {% for freelancejob in freelancejobs %}
+        <!-- Start Item: copy and paste the code below to add an item to the list  -->
+        <div class="column is-6">
+         <div class="card is-shady">
+          <header class="card-header">
+            <p class="card-header-title">
+              {{freelancejob.job_title}}
+            </p>           
+          </header>
+           <div class="card-image">
+             <figure class="image">
+               <img src="{{ url_for('static', filename='img/'+freelancejob.job_img ) }}" alt="Placeholder image" class="modal-button" data-target="modal-image2">
+             </figure>
+           </div>
+           <div class="card-content">
+             <div class="content">
+               <p>
+                  <div class="control">
+                    <div class="tags has-addons">
+                      <span class="tag is-dark">Status:</span>
+                      <span class="tag has-background-link-light">{{freelancejob.job_status}}</span>
+                    </div>
+                  </div>
+                </p>
+               <!-- job description -->
+               <p>
+                {{freelancejob.job_description}}
+                 </p>
+                
+             </div>
+           </div>
+           <footer class="card-footer">
+             <div class="card-footer-item">
+               
+               <b>Amount Made : {{freelancejob.amount_made}}</b>
+              </div>
+              <div class="card-footer-item">
+                 {% if user.is_authenticated %}
+                 <p class="buttons">
+                   <a class="button is-primary" href="/freelancejobs/edit/{{freelancejob.id}}">
+                     <span class="icon is-small" >
+                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                     </span>
+                   </a>
+                   <a class="button is-danger" href="/freelancejobs/delete/{{freelancejob.id}}">
+                     <span class="icon is-small">
+                       <i class="fa fa-trash"></i>
+                     </span>
+                   </a>
+                 </p>
+                 {% endif %}
+               </div>
+             </footer>
+             <div class="client-review-item">
+              <div class="item">
+                  <p>
+                    {{freelancejob.quoted_review}}
+                  </p>
+                  <div class="user">
+                    <div class="info">
+                      <h2>{{freelancejob.client_name}}</h2>
+                      </div>
+                      <i class="fa fa-quote-left"></i>
+                  </div>
+              </div>              
+            </div>   
+         </div>
+       </div>
+       {% else %}
+       <!-- End item -->
+       {% if user.is_authenticated %}
+       <div class="notification is-info has-text-centered" style="margin:40px auto;">
+        You don't have any jobs yet, Have you finished any jobs lately? - <a href="/add-job">Add a job</a>
+      </div>
+      {% else %}
+      <div class="notification is-info has-text-centered" style="margin:40px auto;">
+        I don't have any jobs yet!, Do you need any help? - <a href="/contact">Hire Me</a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+        
+</section>
+{% endblock %}
+
+

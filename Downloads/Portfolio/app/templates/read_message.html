@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block title %}Message From {{message.full_name}}{% endblock %}
+{% block content %}
+   
+
+    <div class="container" >
+        <!-- START ARTICLE FEED -->
+        <section class="articles" style="margin-top: 50px ;">
+            <div class="column is-8 is-offset-2">
+               
+            
+                <div class="card">
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        From: {{message.full_name}}
+                      </p>
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                        {{message.message_content }}
+                      </div>
+                    </div>
+                    <footer class="card-footer">
+                      <a href="mailto:{{ message.email }}?subject=Reply: From Cloud Baker" class="card-footer-item">Reply</a>
+                      <a href="#" class="card-footer-item"></a>
+                      <div class="card-footer-item">
+                        <p class="buttons">
+                            <a class="button is-dark" href="/message/archive/{{ message.id }}">
+                              <span class="icon is-small" >
+                                <i class="fa fa-archive" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                            <a class="button is-danger" href="/message/delete/{{ message.id }}">
+                              <span class="icon is-small">
+                                <i class="fa fa-trash"></i>
+                              </span>
+                            </a>
+                          </p>
+                      </div>
+                    </footer>
+                  </div>
+                </div>
+              
+              
+              </div>
+
+        </section>
+     
+    </div>
+        
+{% endblock %}

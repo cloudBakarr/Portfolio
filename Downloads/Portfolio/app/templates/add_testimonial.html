@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}Add Job{% endblock %}
+{% block content %}
+  <section class="container">
+  <br />
+  <div class="has-text-centered">
+      <span class="is-size-3">ADD TESIMONIAL</span>
+  </div>
+
+  <br />
+  <div class="section-light contact card" id="contact" style="width: 60%;margin: 20px auto;padding: 20px;">
+    {% if message != None %}
+      <div class="notification is-danger">
+          {{message}}
+      </div>
+    {% endif %}
+      <div class="container">
+          <div class="columns is-multiline" data-aos="fade-in-up" data-aos-easing="linear">
+          <div class="column">
+              <form action="" method="POST" enctype=multipart/form-data>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="field">
+                  <label class="label">Client Review</label>
+                  <div class="control has-icons-left">
+                      <textarea class="textarea"  name="testimonial_content" placeholder="What the Client says about you?"></textarea>              
+                    </span>
+                  </div>
+                </div>
+                  <div class="field">
+                    <label class="label">Client Name</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Client Name" name="client_name" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Do you want to show this testimonial on the home page?</label>
+                    <div class="select" >
+                      <select name="show_home">
+                        <option value="no">Don't Show it</option>
+                        <option value="yes">Show on Home Page</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control ">
+                      <button class="button is-primary">
+                          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        &nbsp;&nbsp;Add Testimonial
+                    </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+  
+{% endblock %}
+
+

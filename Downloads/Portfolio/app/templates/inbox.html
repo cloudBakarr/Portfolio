@@ -1,0 +1,157 @@
+{% extends "base.html" %} {% block title %}Inbox{% endblock %}
+{% block hover_inbox %}has-background-info-dark has-text-white{% endblock %}
+{% block content %}
+<br />
+<div class="has-text-centered">
+    <span class="is-size-3">INBOX</span>
+</div>
+<br />
+
+      <section class="container" style="padding: 10px;">
+        <div class="columns features is-multiline">
+          <br />
+        
+          <div class="column is-6">
+            <article class="panel is-info" style="background-color: #fff;">
+              <p class="panel-heading">
+                Fulltime Job Offers
+              </p>
+              {% for fulltime_job_offer in fulltime_job_offers %}
+                  <a href="/message/{{fulltime_job_offer.id}}" class="panel-block  {% if fulltime_job_offer.message_status == 'unread' %} is-active {% endif %}">
+                    <span class="panel-icon">
+                      <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    {{fulltime_job_offer.full_name}}
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    {% if fulltime_job_offer.message_status == "unread" %}
+                    <span class="panel-icon" style="color:red;">
+                      <i class="fa fa-circle" aria-hidden="true"></i>
+                    </span>
+                    {% endif %}
+                  </a>
+               {% else %}
+                  <a class="panel-block is-active">
+                  You don't have any messages!
+                  </a>
+               {% endfor %}
+            </article>
+          </div>
+          <div class="column is-6">
+                      <article class="panel is-info" style="background-color: #fff;">
+                        <p class="panel-heading">
+                          Freelance Offers
+                        </p>
+                        {% for freelance_job in freelance_jobs %}
+                        <a href="/message/{{freelance_job.id}}" class="panel-block  {% if freelance_job.message_status == 'unread' %} is-active {% endif %}">
+                          <span class="panel-icon">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                          </span>
+                          {{freelance_job.full_name}}
+                          &nbsp;&nbsp;
+                          &nbsp;&nbsp;
+                          &nbsp;&nbsp;
+                          {% if freelance_job.message_status == "unread" %}
+                          <span class="panel-icon" style="color:red;">
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                          </span>
+                          {% endif %}
+                        </a>
+                        {% else %}
+                        <a class="panel-block is-active">
+                        You don't have any messages!
+                        </a>
+                     {% endfor %}
+                      </article>
+                    </div>
+
+          <div class="column is-6">
+            <article class="panel is-info" style="background-color: #fff;">
+              <p class="panel-heading">
+                Consultation
+              </p>
+              {% for consultation in consultations %}
+              <a href="/message/{{consultation.id}}" class="panel-block  {% if consultation.message_status == 'unread' %} is-active {% endif %}">
+                <span class="panel-icon">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+                {{consultation.full_name}}
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                {% if consultation.message_status == "unread" %}
+                <span class="panel-icon" style="color:red;">
+                  <i class="fa fa-circle" aria-hidden="true"></i>
+                </span>
+                {% endif %}
+              </a>
+              {% else %}
+              <a class="panel-block is-active">
+              You don't have any messages!
+              </a>
+           {% endfor %}
+            </article>
+          </div>
+
+          <div class="column is-6">
+            <article class="panel is-info" style="background-color: #fff;">
+              <p class="panel-heading">
+                Other
+              </p>
+              {% for other in others %}
+              <a href="/message/{{other.id}}" class="panel-block  {% if other.message_status == 'unread' %} is-active {% endif %}">
+                <span class="panel-icon">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+                {{other.full_name}}
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                {% if other.message_status == "unread" %}
+                <span class="panel-icon" style="color:red;">
+                  <i class="fa fa-circle" aria-hidden="true"></i>
+                </span>
+                {% endif %}
+              </a>
+              {% else %}
+              <a class="panel-block is-active">
+              You don't have any messages!
+              </a>
+           {% endfor %}
+            </article>
+          </div>
+          
+          </div>
+          <article class="panel is-info" style="background-color: #fff;">
+            <p class="panel-heading">
+              Archive
+            </p>
+            {% for archive in archives %}
+            <a href="/message/{{archive.id}}" class="panel-block  {% if archive.message_status == 'unread' %} is-active {% endif %}">
+              <span class="panel-icon">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+              {{archive.full_name}}
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              {% if archive.message_status == "unread" %}
+              <span class="panel-icon" style="color:red;">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+              </span>
+              {% endif %}
+            </a>
+            {% else %}
+            <a class="panel-block is-active">
+            You don't have any messages!
+            </a>
+         {% endfor %}
+          </article>
+          </div>
+       
+           
+      </section>
+
+
+{% endblock %}

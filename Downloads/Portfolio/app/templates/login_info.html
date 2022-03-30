@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block title %}Edit Blog{% endblock %}
+{% block content %}
+  <section class="container">
+  <br />
+  <div class="has-text-centered">
+      <span class="is-size-3">LOGIN INFO</span>
+  </div>
+  <br />
+  <div class="section-light contact card" id="contact" style="width: 60%;margin: 20px auto;padding: 20px;">
+    {% if message != None %}
+        <div class="notification is-danger">
+            {{message}}
+        </div>
+    {% endif %}
+    {% if message_s != None %}
+        <div class="notification is-success">
+            {{message_s}}
+        </div>
+    {% endif %}
+      <div class="container">
+          <div class="columns is-multiline" data-aos="fade-in-up" data-aos-easing="linear">
+          <div class="column">
+              <form action="" method="POST">
+                <div class="field">
+                  <label class="label">E-mail</label>
+                  <div class="control">
+                    <input class="input" value="{{ user.email }}" type="text" placeholder="E-mail" name="email" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label">New Password</label>
+                  <div class="control">
+                    <input class="input" type="password" placeholder="new password" name="new_password" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label">Repeat Password</label>
+                  <div class="control">
+                    <input class="input" type="password" placeholder="repeat rassword" name="repeat_password" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="field">
+                  <div class="control ">
+                    <button class="button is-primary">
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            &nbsp;&nbsp;Update Info
+                        </button>
+                        </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+
+{% endblock %}
+
+

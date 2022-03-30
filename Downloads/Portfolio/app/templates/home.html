@@ -1,0 +1,243 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block hover_home %}has-background-info-dark has-text-white{% endblock %}
+{% block content %}
+    
+      
+<section class="hero is-medium is-link has-text-centered"
+  style="background-image: url(static/img/back.jpg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+  <div class="hero-body">
+    <img src="static/img/CBL.png" width="400px" >
+    <p class="subtitle"> Cloud Engineer
+    </p>
+  
+  </div>
+</section>
+
+
+
+<section class="container has-text-centered">
+  <br />
+  <p class="section-heading">Welcome to my portfolio page.</p>
+  <section>
+    <div class="featured-story-grid">
+
+
+        <div class="columns">
+          <div class="column">
+            <img src="static/img/aws.png"  width="200px">
+          </div>
+          <div class="column">
+            <img src="static/img/Google-Cloud-Emblem.png">
+          </div>
+          <div class="column">
+            <img src="static/img/azure.jpg" width="200px">
+          </div>
+        </div>
+      <h2 class="feature-heading" style="font-size: 30px;">2X GCP Cert</h2>
+
+      <p class="paragraph" style="font-size: 30px;">Since I&#x27;m highly interested in Cloud Computing, and Google is a
+        market leader with their
+        state-of-the-art GCP platform, I&#x27;ve been keen to get their certs and learn the ins and outs of GCP.</p>
+      <div class="wrapz">
+        <form action="https://www.credential.net/profile/bakarhaythar219163/wallet#gs.pn0csd" method="get"
+          target="_blank"> <button class="buttonz">Certs</button>
+        </form>
+      </div>
+
+  </section>
+  <div class="columns features is-centered ">
+
+    <section class="main">
+      <div clas1s="wrap wrap--3">
+        <a href="/about" class="">
+          <div class="boxcontainer boxcontainer--1"
+            style="background-image:url(static/img/3.jpeg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+            <p>
+              <span class="icon-text">
+                <span class="icon">
+                  <i class="fa fa-address-card"></i>
+                </span>&nbsp;
+                <span>About Me</span>
+              </span>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="wrap wrap--2">
+        <a href="/projects" class="">
+          <div class="boxcontainer boxcontainer--1"
+            style="background-image:url(static/img/2.jpeg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+            <p>
+              <span class="icon-text">
+                <span class="icon">
+                  <i class="fa fa-code"></i>
+                </span>&nbsp;
+                <span>Projects</span>
+              </span>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="wrap wrap--1">
+        <a href="/blog" class="">
+          <div class="boxcontainer boxcontainer--1"
+            style="background-image:url(static/img/blog.jpg);background-position: center;background-size: cover;background-repeat: no-repeat;">
+            <p>
+              <span class="icon-text">
+                <span class="icon">
+                  <i class="fa fa-edit"></i>
+                </span>&nbsp;
+                <span>Blog</span>
+              </span>
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+</section>
+<section class="container has-text-centered">
+        <h2 class="section-heading">What my employers say about me</h2>
+</section>
+
+
+<!-- review section starts  -->
+   
+<section class="review columns features is-multiline">
+  <div class="swiper review-slider">
+
+
+    <div class="swiper-wrapper">
+        {% for testimonial in testimonials %}
+            <div class="swiper-slide slide column is-4">
+                <p>
+                  {{testimonial.testimonial_content}}
+                </p>
+                <div class="user">
+                    <div class="info">
+                        <h3>{{testimonial.client_name}}</h3>
+                    </div>
+                    <i class="fa fa-quote-left"></i>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+  </div>
+
+</section>
+<div class="wrapz">
+  <a href="/testimonials" class="buttonz">See More</a>
+</div>
+<br>
+<br>
+<!-- review section ends -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script>
+  class parallaxTiltEffect {
+    constructor({
+      element,
+      tiltEffect
+    }) {
+      this.element = element;
+      this.boxcontainer = this.element.querySelector(".boxcontainer");
+      this.size = [300, 360];
+      [this.w, this.h] = this.size;
+
+      this.tiltEffect = tiltEffect;
+      this.mouseOnComponent = false;
+      this.handleMouseMove = this.handleMouseMove.bind(this);
+      this.handleMouseEnter = this.handleMouseEnter.bind(this);
+      this.handleMouseLeave = this.handleMouseLeave.bind(this);
+      this.defaultStates = this.defaultStates.bind(this);
+      this.setProperty = this.setProperty.bind(this);
+      this.init = this.init.bind(this);
+      this.init();
+    }
+    handleMouseMove(event) {
+      const {
+        offsetX,
+        offsetY
+      } = event;
+      let X;
+      let Y;
+
+      if (this.tiltEffect == "reverse") {
+        X = ((offsetX - (this.w / 2)) / 3) / 3;
+        Y = (-(offsetY - (this.h / 2)) / 3) / 3;
+      } else if (this.tiltEffect == "normal") {
+        X = (-(offsetX - (this.w / 2)) / 3) / 3;
+        Y = ((offsetY - (this.h / 2)) / 3) / 3;
+      }
+
+      this.setProperty('--rY', X.toFixed(2));
+      this.setProperty('--rX', Y.toFixed(2));
+
+      this.setProperty('--bY', (80 - (X / 4).toFixed(2)) + '%');
+      this.setProperty('--bX', (80 - (Y / 4).toFixed(2)) + '%');
+    }
+    handleMouseEnter() {
+      this.mouseOnComponent = true;
+      this.boxcontainer.classList.add("boxcontainer--active");
+    }
+    handleMouseLeave() {
+      this.mouseOnComponent = false;
+      this.defaultStates();
+    }
+    defaultStates() {
+      this.boxcontainer.classList.remove("boxcontainer--active");
+      this.setProperty('--rY', 0);
+      this.setProperty('--rX', 0);
+      this.setProperty('--bY', '80%');
+      this.setProperty('--bX', '50%');
+    }
+
+    setProperty(p, v) {
+      return this.boxcontainer.style.setProperty(p, v);
+    }
+
+    init() {
+      this.element.addEventListener('mousemove', this.handleMouseMove);
+      this.element.addEventListener('mouseenter', this.handleMouseEnter);
+      this.element.addEventListener('mouseleave', this.handleMouseLeave);
+    }
+  }
+  const $ = e => document.querySelector(e);
+
+  const wrap1 = new parallaxTiltEffect({
+    element: $('.wrap--1'),
+    tiltEffect: 'reverse'
+  })
+  const wrap2 = new parallaxTiltEffect({
+    element: $('.wrap--2'),
+    tiltEffect: 'normal'
+  })
+  const wrap3 = new parallaxTiltEffect({
+    element: $('.wrap--3'),
+    tiltEffect: 'reverse'
+  })
+
+  
+var swiper = new Swiper(".review-slider", {
+    spaceBetween: 10,
+    grabCursor: true,
+    loop:true,
+    autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+    },
+   
+    breakpoints:{
+        0:{
+            slidesPerView:1,
+        },
+        768:{
+            slidesPerView:2,
+        },
+      
+    },
+});
+
+</script>
+{% endblock %}

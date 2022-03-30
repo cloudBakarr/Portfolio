@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% block title %}Contact Me{% endblock %}
+{% block hover_contact %}has-background-info-dark has-text-white{% endblock %}
+{% block content %}
+  <section class="container">
+  <br />
+  <div class="has-text-centered">
+      <span class="is-size-3">CONTACT ME</span>
+  </div>
+  <br />
+  <div class="section-light contact card" id="contact" style="width: 60%;margin: 20px auto;padding: 20px;">
+    {% if message != None %}
+      <div class="notification {% if m_type != None %} {{m_type}} {% endif %}">
+          {{message}}
+      </div>
+    {% endif %}
+      <div class="container">
+          <div class="columns is-multiline" data-aos="fade-in-up" data-aos-easing="linear">
+          <div class="column">
+            <form action="" method="POST">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                  <div class="field">
+                    <label class="label">Full Name</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="text" placeholder="Ex. Jane Smith" name="full_name" />
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="email" placeholder="Ex. hello@gmail.com" name="email"/>
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">What's the purpose of the message?</label>
+                    <div class="select" >
+                      <select name="message_purpose">
+                        <option value="freelance_job">Freelance Job</option>
+                        <option value="fulltime_job_offer">Fulltime Job Offer</option>
+                        <option value="consultation">Consultation</option>
+                        <option value="other" selected>Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Message</label>
+                    <div class="control">
+                      <textarea class="textarea" placeholder="What do you have for me?" name="message_content"></textarea>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <img src="../static/img/{{tstr}}.png"><br>
+                    <input type="text" placeholder="Enter The code" class="input" style="width: 160px;"name="ip">
+                  </div>
+                  <div class="field">
+                    <div class="control ">
+                      <button class="button is-primary">
+                        Submit&nbsp;&nbsp;
+                        <i class="fa fa-paper-plane"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+{% endblock %}
+
+
